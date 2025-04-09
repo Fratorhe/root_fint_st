@@ -41,11 +41,7 @@ def bisection_method(func, a, b):
         The approximate root of the function, or None if a root was not found.
     """
     f_a = eval_expr(func, a)
-    print(f"{a=}")
-    print(f"{f_a=}")
     f_b = eval_expr(func, b)
-    print(f"{b=}")
-    print(f"{f_b=}")
     if f_a * f_b >= 0:
         raise ValueError(
             "Function values at interval endpoints must have opposite signs."
@@ -60,6 +56,13 @@ def bisection_method(func, a, b):
         b = midpoint
 
     return a, b
+
+
+def NewtonRaphson(equation, derivative, x0):
+    f_x = eval_expr(equation, x0)
+    f_prime_x = eval_expr(derivative, x0)
+    x0_new = x0 - f_x / f_prime_x
+    return x0_new
 
 
 def eval_expr(expr, x) -> float:
@@ -162,13 +165,6 @@ def update_figure():
             name=f"f'(x) = {derivative_str}",
         )
     )
-
-
-def NewtonRaphson(equation, derivative, x0):
-    f_x = eval_expr(equation, x0)
-    f_prime_x = eval_expr(derivative, x0)
-    x0_new = x0 - f_x / f_prime_x
-    return x0_new
 
 
 # --- Streamlit App ---
