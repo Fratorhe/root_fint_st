@@ -163,6 +163,8 @@ def update_figure():
             y=f_prime_plot,
             mode="lines",
             name=f"f'(x) = {derivative_str}",
+            line_dash="dash",
+            line_color="red",
         )
     )
 
